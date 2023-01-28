@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KlientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,15 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+ 
+Route::resource('Klient', KlientController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::get('Klient/edit/{klient}', [KlientController::class, 'edit'])->name('Klient.edit')
+    ->middleware(['auth', 'verified']);
+
+Route::delete('Klient/{klient}',[KlientController::class,'destroy'])->name('posts.destroy');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
