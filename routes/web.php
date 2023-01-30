@@ -33,7 +33,7 @@ Route::resource('Klient', KlientController::class)
 Route::get('Klient/edit/{klient}', [KlientController::class, 'edit'])->name('Klient.edit')
     ->middleware(['auth', 'verified']);
 
-Route::delete('Klient/{klient}',[KlientController::class,'destroy'])->name('posts.destroy');
+//Route::delete('Klient/{klient}',[KlientController::class,'destroy'])->name('Klient.destroy');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
